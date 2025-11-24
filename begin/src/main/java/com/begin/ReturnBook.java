@@ -25,18 +25,17 @@ public class ReturnBook extends Application {
         TextField tf = new TextField();
         tf.setPromptText("GY_|_|_|_|_|");
         Button btn = new Button("Return Book");
+        String student_id = StudentLogin.getStudentId() ;
         btn.setOnAction(e->{
-           
-               System.out.println("Want Email Receipt:Yes / No");
-               Scanner sc = new Scanner(System.in);
-               String choice = sc.nextLine();
-               if(choice.equalsIgnoreCase("yes")){
-                   System.out.println("Email Receipt Sent Successfully");
-               }
-               else{
-                   System.out.println("Book\t" + tf.getText() +"\tReturned Successfully :)");
-               }   
-               tf.setText("") ;
+           String book_id = tf.getText() ;
+            Boolean verifier = IssueDAO.returnBook(book_id, student_id) ;
+            if(verifier){
+                System.out.println("Book %d returned successfully" + book_id);
+            }
+            else{
+                System.out.println("Book does not returned ");
+            }
+              
         });
         btn.setStyle("-fx-background-color: green; -fx-text-fill: white; -fx-padding: 10px 20px;");
 

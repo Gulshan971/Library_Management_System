@@ -14,6 +14,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class IssueBook extends Application{ 
+
+   
     private static Scene scene ;
     @Override
     public void start(Stage stage) throws Exception {
@@ -23,26 +25,21 @@ public class IssueBook extends Application{
          text.setFont(new Font ("Segoe Script", 24));
          Label label = new Label("Enter Book ID");
          TextField tf = new TextField();
-         tf.setPromptText("GY_|_|_|_|_|");
-         Label label1 = new Label("Enter Student ID");
-        TextField tf1 = new TextField();
-         tf1.setPromptText("ST_|_|_|_|_|");
+         tf.setPromptText("GB_|_|_|_|_|");
+         String student_id = StudentLogin.getStudentId() ;
          Button btn = new Button("Issue Book");
+
          btn.setOnAction(e->{
+             System.out.println(student_id);
+             String book_id = tf.getText() ;
+             Boolean verifier = IssueDAO.issueBook(book_id, student_id) ;
+             if(verifier){
+                System.out.println("Book issued successful");
+             }
+             else{
+                System.out.println("Book does not issued successfully");
+             }
             
-                System.out.println("Want Email Receipt:Yes / No");
-                Scanner sc = new Scanner(System.in);
-                String receipt = sc.nextLine();
-                if(receipt.equalsIgnoreCase("Yes")){
-                    System.out.println("Email Receipt Sent Successfully");
-                }
-                else{
-                    System.out.println("Book\t" + tf.getText() +"\tIssued Successfully :)");
-                    LocalDate dueDate = LocalDate.now().plusDays(14);
-                    System.out.println("Book Due Date is: " + dueDate);
-                }   
-                tf.setText("") ;
-                tf1.setText("") ;
 
          });
          btn.setStyle("-fx-background-color: green; -fx-text-fill: white; -fx-padding: 10px 20px;");
@@ -57,7 +54,7 @@ public class IssueBook extends Application{
              }
          });
          VBox root = new VBox(12);
-         root.getChildren().addAll(text,label,tf,label1,tf1 , btn ,backbtn) ;
+         root.getChildren().addAll(text,label,tf, btn ,backbtn) ;
          Scene scene = new Scene(root,600,400);
          root.setStyle("-fx-background-color: #54ac23;");
          stage.setTitle("Issue Book");

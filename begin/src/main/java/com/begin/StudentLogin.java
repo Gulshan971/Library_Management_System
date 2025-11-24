@@ -16,6 +16,14 @@ import javafx.stage.Stage;
 
 public class StudentLogin extends Application {
    private static Scene scene ;
+   private static  String studentId; 
+    public static String getStudentId(){
+        return studentId ;
+    }
+
+    public void setStudentId(String id){
+            this.studentId = id ;
+    }
     @Override
     public void start(Stage stage)throws Exception{
         // Text title = new Text("LIBRARIAN_LOGIN");
@@ -63,10 +71,26 @@ public class StudentLogin extends Application {
         GridPane.setHalignment(passwordLabel, HPos.CENTER);
 
          submit.setOnAction(e -> {
-            String username = usernameField.getText();
-            String password = passwordField.getText();
+            String student_id = usernameField.getText();
+            String student_password = passwordField.getText();
             // Handle login logic here
-            System.out.println("Username: " + username + ", Password: " + password);
+           
+    boolean isValid = StudentDAO.validateLogin(student_id, student_password);
+
+       if (isValid) {
+        try{
+        StudentDashboard studentDashboard = new StudentDashboard() ;
+        studentDashboard.start(stage) ;
+        setStudentId(student_id);
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+        }
+        System.out.println("Login Successful!");
+        // open dashboard here
+      } else {
+        System.out.println("Invalid ID or Password!");
+     }
         });
 
         scene = new Scene(grid, 400, 300);

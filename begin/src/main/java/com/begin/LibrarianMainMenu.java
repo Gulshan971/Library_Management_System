@@ -47,6 +47,16 @@ public class LibrarianMainMenu extends Application{
         Button b2 = new Button("VIEW BOOK");
         b2.setLayoutX(50);
         b2.setLayoutY(150); 
+        b2.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event){
+                AllViewsTable allViewsTable = new AllViewsTable() ;
+                try {
+                    allViewsTable.start(stage) ;
+                } catch (Exception e) {
+                }
+            }
+        });
         Button b3 = new Button("ADD STUDENT");
         b3.setLayoutX(50);
         b3.setLayoutY(200);

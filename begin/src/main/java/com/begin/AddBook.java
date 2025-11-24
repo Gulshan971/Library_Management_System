@@ -25,8 +25,8 @@ public class AddBook extends Application {
        // ---------- LEFT SIDE FORM ----------
         Text title = new Text("ADD_BOOK");
 
-        TextField[] addBooks = new TextField[7];
-        Label[] labels = new Label[7];
+        TextField[] addBooks = new TextField[6];
+        Label[] labels = new Label[6];
 
         String[] labelTexts = {
                 "Enter Book_id",
@@ -34,8 +34,7 @@ public class AddBook extends Application {
                 "Enter Book_name",
                 "Enter Book_price",
                 "Enter Book_edition",
-                "Enter Book_Isbn" ,
-                "Enter Book_Number"
+                "Enter Book_Isbn" 
         };
 
         VBox form = new VBox(12);
@@ -45,7 +44,7 @@ public class AddBook extends Application {
        // form.setBackground(Color.MAROON);
        form.setStyle("-fx-background-color: teal;");
 
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < 6; i++) {
             labels[i] = new Label(labelTexts[i]);
             labels[i].setTextFill(Color.DARKKHAKI);
             addBooks[i] = new TextField();
@@ -75,14 +74,19 @@ public class AddBook extends Application {
 
 
         btn.setOnAction((ActionEvent e) -> {
-            System.out.println(
-                    "Book_ID: " + addBooks[0].getText() + " | " +
-                    "Author: " + addBooks[1].getText() + " | " +
-                    "Name: " + addBooks[2].getText() + " | " +
-                    "Price: " + addBooks[3].getText() + " | " +
-                    "Edition: " + addBooks[4].getText() + " | " +
-                    "Identical: " + addBooks[5].getText()
-            );
+           
+           String[] record = new String[]{
+           addBooks[0].getText(),
+           addBooks[1].getText(),
+           addBooks[2].getText(),
+           addBooks[3].getText(),
+           addBooks[4].getText(),
+           addBooks[5].getText()
+    };
+
+    BookDAO.addBook(record);
+
+            
         });
 
 

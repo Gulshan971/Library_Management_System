@@ -19,6 +19,14 @@ public class StudentDashboard extends Application{
           Button b1 = new Button("VIEW BOOK");
           b1.setLayoutX(540);
           b1.setLayoutY(200); 
+          b1.addEventHandler(ActionEvent.ACTION, e->{
+            AllViewsTable allViewsTable = new AllViewsTable() ;
+            try {
+                allViewsTable.start(stage) ;
+            } catch (Exception ex) {
+                ex.getMessage() ;
+            }
+          });
           Button b2 = new Button(" ISSUED BOOK") ;
           b2.setLayoutX(300);
           b2.setLayoutY(500);
@@ -34,9 +42,9 @@ public class StudentDashboard extends Application{
           b3.setLayoutX(520);    
           b3.setLayoutY(550);
           b3.addEventHandler(ActionEvent.ACTION, e->{
-              RenewBook renewBook = new RenewBook() ;
+              ReturnBook returnBook = new ReturnBook() ;
               try {
-                  renewBook.start(stage);
+                  returnBook.start(stage);
               } catch (Exception ex) {
                   ex.getMessage();
               }

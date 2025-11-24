@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.* ;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -63,65 +64,91 @@ private static Scene scene ;
     arc.setType(ArcType.CHORD) ; 
     arc.setFill(Color.DARKSALMON) ; 
  
-    Rectangle rect1 = new Rectangle() ; 
-    rect1.setX(10) ; 
-    rect1.setY(10) ; 
-    rect1.setWidth(500); 
-    rect1.setHeight(100); 
-    rect1.setArcHeight(20); 
-    rect1.setArcWidth(50) ; 
-    rect1.addEventHandler(ActionEvent.ACTION, e-> { 
+    Button rect1 = new Button("Librarian Login") ; 
+
+    // Button size
+    rect1.setPrefSize(500, 100);   // preferred size (best for buttons)
+    rect1.setMaxSize(500, 100);
+
+   // Styling the button
+   rect1.setStyle(
+    "-fx-background-color: linear-gradient(to right,#32ac12 ,#b23c23 , #12ac54);" +
+    "-fx-background-radius: 20;" +    // rounded corners
+    "-fx-text-fill: white;" +         // text color
+    "-fx-font-size: 40px;" +          // text size
+    "-fx-font-family: 'Palace Script MT';"
+  );
+
+// Make mouse cursor a hand pointer
+  rect1.setCursor(Cursor.OPEN_HAND);
+     
+    rect1.setOnAction( e-> { 
         LibrarianLogin librarianLogin = new LibrarianLogin() ; 
         try {
             librarianLogin.start(stage) ;
-            stage.close() ;
+            //stage.close() ;
         } catch (Exception ex) {
             ex.getMessage() ;
         }
     }) ;
  
-    Text text1 = new Text("Librarian Login") ; 
-    text1.setFont(Font.font("Palace Script MT" , 50)); 
-    LinearGradient lg2 = new LinearGradient(0,0,1,0,true,CycleMethod.NO_CYCLE, stop) ; 
-    rect1.setFill(lg2) ;
+   
+    //L//inearGradient lg2 = new LinearGradient(0,0,1,0,true,CycleMethod.NO_CYCLE, stop) ; 
+    //r//ect1.setFill(lg2) ;
   
-     Rectangle rect2 = new Rectangle() ; 
-    rect2.setX(10) ; 
-    rect2.setY(10) ; 
-    rect2.setWidth(500); 
-    rect2.setHeight(100); 
-    rect2.setArcHeight(20); 
-    rect2.setArcWidth(50) ; 
-    rect2.setFill(Color.GOLD) ; 
-    Text text2 = new Text("STUDENT Login") ; 
-    text2.setFont(Font.font("Palace Script MT" , 50)); 
-    rect2.addEventHandler(MouseEvent.MOUSE_CLICKED, e-> { 
+    Button rect2 = new Button("Student Login") ; 
+    // Button size
+    rect2.setPrefSize(500, 100);   // preferred size (best for buttons)
+    rect2.setMaxSize(500, 100);
+
+// Styling the button
+   rect2.setStyle(
+    "-fx-background-color: #43bcac;" +
+    "-fx-background-radius: 20;" +    // rounded corners
+    "-fx-text-fill: white;" +         // text color
+    "-fx-font-size: 40px;" +          // text size
+    "-fx-font-family: 'Palace Script MT';"
+);
+
+// Make mouse cursor a hand pointer
+  rect2.setCursor(Cursor.HAND);
+     
+   
+    rect2.setOnAction(  e-> { 
         StudentLogin studentLogin = new StudentLogin() ; 
         try {
             studentLogin.start(stage) ;
-            stage.close() ;
+            //stage.close() ;
         } catch (Exception ex) {
             ex.getMessage() ;
         }
     }) ;
 
  
-     Rectangle rect3 = new Rectangle() ; 
-    rect3.setX(10) ; 
-    rect3.setY(10) ; 
-    rect3.setWidth(500); 
-    rect3.setHeight(100); 
-    rect3.setArcHeight(20); 
-    rect3.setArcWidth(50) ; 
-    rect3.setFill(Color.GOLD) ; 
-    Text text3 = new Text("LIBRARIAN Logout") ; 
-    text3.setFont(Font.font("Palace Script MT" , 50)); 
-    rect3.addEventHandler(KeyEvent.KEY_PRESSED, e->
+    Button rect3 = new Button("Librarian Logout") ; 
+
+    // Button size
+    rect3.setPrefSize(500, 100);   // preferred size (best for buttons)
+    rect3.setMaxSize(500, 100);
+
+  // Styling the button
+   rect3.setStyle(
+    "-fx-background-color: #3e7fcfff;" +
+    "-fx-background-radius: 20;" +    // rounded corners
+    "-fx-text-fill: white;" +         // text color
+    "-fx-font-size: 40px;" +          // text size
+    "-fx-font-family: 'Palace Script MT';"
+);
+
+// Make mouse cursor a hand pointer
+  rect2.setCursor(Cursor.CLOSED_HAND);
+     
+    rect3.setOnAction( e->
       {
         LibrarianLogin librarianLogin = new LibrarianLogin() ; 
         try {
             librarianLogin.start(stage) ;
-            stage.close() ;
+            //stage.close() ;
         } catch (Exception ex) {
             ex.getMessage() ;
         }
@@ -161,11 +188,11 @@ private static Scene scene ;
    StackPane []st = new StackPane[5] ; 
    st[0] = new StackPane(ellipse , text) ; 
    st[0].setPadding(new Insets(20));
-   st[1] = new StackPane(rect1 , text1) ;
+   st[1] = new StackPane(rect1) ;
    st[1].setPadding(new Insets(20));
-   st[2] = new StackPane(rect2 , text2) ;
+   st[2] = new StackPane(rect2 ) ;
     st[2].setPadding(new Insets(20));  
-   st[3] = new StackPane(rect3 , text3) ;
+   st[3] = new StackPane(rect3) ;
     st[3].setPadding(new Insets(20)); 
    st[4] = new StackPane(ellipse2 , text5 ) ; 
   VBox root = new VBox(20); // 20 = spacing between StackPanes 

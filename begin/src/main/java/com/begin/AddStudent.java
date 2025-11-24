@@ -73,15 +73,17 @@ public class AddStudent extends Application {
 
 
         btn.setOnAction((ActionEvent e) -> {
-            System.out.println(
-                    "Student_ID: " + addStudent[0].getText() + " | " +
-                    "Student_Name: " + addStudent[1].getText() + " | " +
-                    "Student_dept: " + addStudent[2].getText() + " | " +
-                    "StudentEmail: " + addStudent[3].getText() + " | " +
-                    "StudentBatch: " + addStudent[4].getText() + " | " +
-                    "Student_Password: " + addStudent[5].getText() + " | " +
-                    "Student_Phone_number: " + addStudent[6].getText()
-            );
+            String []student = new String[]{
+                    addStudent[0].getText(),
+                    addStudent[1].getText(),     
+                    addStudent[2].getText(),
+                    addStudent[3].getText(),
+                    addStudent[4].getText(),
+                    addStudent[5].getText(),
+                    addStudent[6].getText()
+            };    
+           StudentDAO.addStudent(student);     
+            
         });
         VBox root = new VBox();
         root.getChildren().add(form);

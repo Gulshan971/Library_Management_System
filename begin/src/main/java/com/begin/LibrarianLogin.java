@@ -16,11 +16,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class LibrarianLogin extends Application {
     private static Scene scene ;
+    
     @Override
     public void start(Stage stage)throws Exception{
         // Text title = new Text("LIBRARIAN_LOGIN");
@@ -40,6 +42,8 @@ public class LibrarianLogin extends Application {
 
         Button submit = new Button("Login");
 
+        Button back = new Button("Back") ;
+
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(12));
         grid.setHgap(5);
@@ -50,6 +54,7 @@ public class LibrarianLogin extends Application {
         grid.add(passwordLabel, 0,2);
         grid.add(passwordField, 1, 2);
         grid.add(submit, 1,3);
+        grid.add(back , 1,4) ;
 
         // Column constraints: column 1 expands
         ColumnConstraints c0 = new ColumnConstraints();
@@ -71,15 +76,35 @@ public class LibrarianLogin extends Application {
             String username = usernameField.getText();
             String password = passwordField.getText();
             // Handle login logic here
-            System.out.println("Username: " + username + ", Password: " + password);
-        });
+            if(username.equals("Lib1") && password.equals("pass1")){
+                try{
+                LibrarianMainMenu librarianMainMenu = new LibrarianMainMenu() ;
+                librarianMainMenu.start(stage);
 
-        scene = new Scene(grid, 400, 400);
+            }
+            catch(Exception ex){
+                ex.getMessage() ;
+            }
+        }
+        });
+        back.setOnAction(e->{
+         MAinMenu mAinMenu = new MAinMenu() ;
+         try {
+             mAinMenu.start(stage) ;
+         } catch(Exception ex) {
+            System.out.println(ex.getMessage() );
+         }
+        }
+
+        );
+
+        scene = new Scene(grid, 400, 400,Color.FIREBRICK);
         stage.setScene(scene);
         stage.setTitle("Login");
         stage.show();
         
     }
+    
     
     public static void main(String[] args) {
         launch(args);
