@@ -1,13 +1,8 @@
 package com.begin;
 
-
-
-
-
 import javafx.application.Application;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
-
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -20,18 +15,18 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class LibrarianLogin extends Application {
+public class AdminLogin extends Application {
+
     private static Scene scene ;
-    
     @Override
     public void start(Stage stage)throws Exception{
-        Text title = new Text("LIBRARIAN_LOGIN");
+        Text title = new Text("ADMIN_LOGIN");
         title.setStyle("-fx-font-size: 24px; -fx-font-weight: bold;"); 
 
-        Label usernameLabel = new Label("Username:");
+        Label usernameLabel = new Label("ADMIN_ID:");
         TextField usernameField = new TextField();
 
-        Label passwordLabel = new Label("Password:");
+        Label passwordLabel = new Label("ADMIN_PASSWORD:");
         PasswordField passwordField = new PasswordField();
 
         Button submit = new Button("Login");
@@ -69,11 +64,10 @@ public class LibrarianLogin extends Application {
          submit.setOnAction(e -> {
             String username = usernameField.getText();
             String password = passwordField.getText();
-            boolean isValid = LibrarianDAO.validateLogin(username, password) ;
             // Handle login logic here
-            if(isValid){
+            if(username.equals("Lib1") && password.equals("pass1")){
                 try{
-                LibrarianMainMenu librarianMainMenu = new LibrarianMainMenu() ;
+                AddLibrarian librarianMainMenu = new AddLibrarian() ;
                 librarianMainMenu.start(stage);
 
             }
@@ -81,11 +75,7 @@ public class LibrarianLogin extends Application {
                 ex.getMessage() ;
             }
         }
-        else{
-            System.out.println("PAssword is incorrect");
-        }
         });
-
         back.setOnAction(e->{
          MAinMenu mAinMenu = new MAinMenu() ;
          try {
@@ -96,16 +86,11 @@ public class LibrarianLogin extends Application {
         }
 
         );
-        grid.setStyle( "-fx-background-color: #5da6b6;" ) ;
+        grid.setStyle( "-fx-background-color: #be77d7ff;" )  ;
         scene = new Scene(grid, 400, 400,Color.FIREBRICK);
         stage.setScene(scene);
         stage.setTitle("Login");
         stage.show();
         
-    }
-    
-    
-    public static void main(String[] args) {
-        launch(args);
     }
 }

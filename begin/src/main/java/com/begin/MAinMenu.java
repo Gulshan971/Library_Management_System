@@ -125,7 +125,7 @@ private static Scene scene ;
     }) ;
 
  
-    Button rect3 = new Button("Librarian Logout") ; 
+    Button rect3 = new Button("ADMIN LOGIN") ; 
 
     // Button size
     rect3.setPrefSize(500, 100);   // preferred size (best for buttons)
@@ -145,9 +145,9 @@ private static Scene scene ;
      
     rect3.setOnAction( e->
       {
-        LibrarianLogin librarianLogin = new LibrarianLogin() ; 
+        AdminLogin librarianAdder = new AdminLogin() ; 
         try {
-            librarianLogin.start(stage) ;
+            librarianAdder.start(stage) ;
             //stage.close() ;
         } catch (Exception ex) {
             ex.getMessage() ;
@@ -222,7 +222,7 @@ private static Scene scene ;
  
     //scene.setFill(lg1) ; 
  
-    stage.setTitle("Ellipse_Generation"); 
+    stage.setTitle("WELCOME TO THE LIBRARY"); 
     stage.setScene(scene) ; 
     stage.show() ; 
  

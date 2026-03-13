@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class IssueDAO {
     public static boolean issueBook(String bookId, String studentId) {
@@ -73,5 +75,15 @@ public class IssueDAO {
             return false;
         }
     }
+
+    public double calculateFine(Date dueDate, Date returnDate) {
+    long diffInMillies = returnDate.getTime() - dueDate.getTime();
+    long daysLate = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+    if(daysLate > 0) {
+        return daysLate * 5; // ₹5 per day
+    } else {
+        return 0;
+    }
+}
 
 }

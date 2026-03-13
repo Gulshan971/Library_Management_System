@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -42,7 +43,7 @@ public class StudentLogin extends Application {
         PasswordField passwordField = new PasswordField();
 
         Button submit = new Button("Login");
-
+        Button backBtn = new Button("Back")  ;
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(12));
         grid.setHgap(5);
@@ -53,7 +54,7 @@ public class StudentLogin extends Application {
         grid.add(passwordLabel, 0,2);
         grid.add(passwordField, 1, 2);
         grid.add(submit, 1,3);
-
+        grid.add(backBtn,1,4);
         // Column constraints: column 1 expands
         ColumnConstraints c0 = new ColumnConstraints();
         ColumnConstraints c1 = new ColumnConstraints();
@@ -93,6 +94,15 @@ public class StudentLogin extends Application {
      }
         });
 
+        backBtn.setOnAction(e->{
+            MAinMenu mAinMenu = new MAinMenu() ;
+            try {
+                mAinMenu.start(stage);
+            } catch (Exception ex) {
+              ex.getMessage();
+            }
+        });
+        grid.setStyle( "-fx-background-color: #d8a854ff;" );
         scene = new Scene(grid, 400, 300);
         stage.setScene(scene);
         stage.setTitle("Login");

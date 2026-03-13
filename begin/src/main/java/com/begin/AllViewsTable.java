@@ -64,7 +64,7 @@ public class AllViewsTable extends Application {
         }
        });
 
-        VBox root = new VBox(10 ,table, backBtn);
+        VBox root = new VBox(10 ,table, backBtn,studentMenu);
         Scene scene = new Scene(root, 800, 400);
         stage.setScene(scene);
         stage.setTitle("All Books");

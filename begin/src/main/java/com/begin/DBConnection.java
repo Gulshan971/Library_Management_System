@@ -21,7 +21,7 @@ public class DBConnection {
                 createStudentTable();
                 createBooksTable();
                 createBookIssueTable();
-
+                createLibrarianTable(); 
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -77,4 +77,16 @@ public class DBConnection {
     Statement stmt = conn.createStatement();
     stmt.execute(sql);
 }
+
+
+   private static void createLibrarianTable() throws SQLException{
+    String sql = "CREATE TABLE IF NOT EXISTS librarian ("
+                 +"librarian_id VARCHAR(20) PRIMARY KEY ,"
+                 +"librarian_name VARCHAR(50) ,"
+                 +"librarian_password VARCHAR(50)"
+                 +");";
+
+    Statement stmt = conn.createStatement();
+    stmt.execute(sql);             
+   }
 }

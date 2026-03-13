@@ -74,9 +74,27 @@ public class LibrarianMainMenu extends Application{
         Button b4 = new Button("ISSUE BOOK");   
         b4.setLayoutX(50);
         b4.setLayoutY(250);
+        b4.addEventHandler(ActionEvent.ACTION, eh->{
+            IssueBook issueBook = new IssueBook() ;
+            try {
+                issueBook.start(stage) ;
+            } catch (Exception e) {
+                e.getMessage() ;
+            }
+        }
+
+        );
         Button b5 = new Button("RETURN BOOK");
         b5.setLayoutX(50);
         b5.setLayoutY(300);
+        b5.addEventHandler(ActionEvent.ACTION, eh->{
+            ReturnBook returnBook = new ReturnBook() ;
+            try {
+                returnBook.start(stage) ;
+            } catch (Exception e) {
+                e.getMessage() ;
+            }
+        });
         Button b6 = new Button("Main Menu");
         b6.setLayoutX(150);
         b6.setLayoutY(350);
